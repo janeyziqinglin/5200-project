@@ -11,6 +11,10 @@ cursor = con.cursor()
 
 
 class Bookdb:
+    """
+    This class handles all database interactions for the book library.
+    It includes methods for viewing, inserting, updating, and deleting book records.
+    """
     def __init__(self):
         self.con = pyo.connect(**dbConfig)
         self.cursor = con.cursor()
@@ -21,11 +25,13 @@ class Bookdb:
         self.con.close()
 
     def view(self):
+        # Code to view records
         self.cursor.execute("SELECT * FROM books")
         rows = self.cursor.fetchall()
         return rows
 
     def insert(self, title, author, isbn, ratings):
+        # Code to insert a new record
         sql = ("INSERT INTO books(title, author, isbn, ratings) VALUES (%s, %s, %s, %s)")
         values = [title, author, isbn, ratings]
         self.cursor.execute(sql, values)
@@ -33,13 +39,14 @@ class Bookdb:
         messagebox.showinfo(title="Book Database", message="New book added to database")
 
     def update(self, id, title, author, isbn, ratings):
+        # Code to update an existing record
         tsql = 'UPDATE books SET title = %s, author = %s, isbn = %s, ratings = %s WHERE id = %s'
         self.cursor.execute(tsql, [title, author, isbn, ratings, id])
         self.con.commit()
         messagebox.showinfo(title="Book Database", message="Book Updated")
 
-
     def delete(self, id):
+        # Code to delete a record
         delquery ='DELETE FROM books WHERE id = %s'
         self.cursor.execute(delquery, [id])
         self.con.commit()
@@ -48,7 +55,12 @@ class Bookdb:
 db = Bookdb()
 
 def get_selected_row(event):
+    """
+    This function is triggered when a row in the list box is selected.
+    It updates the entry fields with the selected row's information.
+    """
     global selected_tuple
+    # Global variable to store the selected tuple
     index = list_bx.curselection()[0]
     selected_tuple = list_bx.get(index)
     title_entry.delete(0, 'end')
@@ -66,6 +78,7 @@ def view_records():
         list_bx.insert('end', row)
 
 def add_book():
+    # Code to handle adding a book
     db.insert(title_text.get(), author_text.get(), isbn_text.get(), ratings_text.get())
     list_bx.delete(0, 'end')
     list_bx.insert('end', (title_text.get(), author_text.get(), isbn_text.get(), ratings_text.get()))
@@ -76,6 +89,7 @@ def add_book():
     con.commit()
 
 def delete_records():
+    # Code to handle deleting a book record
     db.delete(selected_tuple[0])
     con.commit()
 
@@ -86,6 +100,7 @@ def clear_screen():
     isbn_entry.delete(0,'end')
 
 def update_records():
+    # Code to handle updating a book record
     db.update(selected_tuple[0], title_text.get(), author_text.get(), isbn_text.get(), ratings_text.get())
     title_entry.delete(0, "end")
     author_entry.delete(0, "end")
