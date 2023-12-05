@@ -14,9 +14,8 @@ Exit Application: Close the application.
 ## Technical Specifications
   - The primary language is Python3.
   - MySQL database will be used for efficient data query. 
-  - For the Graphical interface, the tkinter library will be used for GUI components, and the tkinter.messagebox will be used to display message boxes to the user.
+  - For the Graphical interface, the tkinter library and the tkinter.messagebox will be used to display message boxes to the user.
   - The mysql.connector and pymysql will be used to connect the Python application to the MySQL database for CRUD (Create, Read, Update, Delete) operations.
-
 
 ## Setting up the MySQL Database
 To set up the database, import the two MySQL dump files in the github into your MySQL server:
@@ -35,8 +34,9 @@ dbConfig = {
 }
 
 ## Running the Application
-1. Clone this repository to your local machine:
-2. Navigate to the project directory and execute the booksApp.py script
+1. Clone this repository to your local machine
+2. Connect to MySQL Database with instruction listed above
+3. Navigate to the project directory and execute the booksApp.py script
 python3 booksApp.py
 
 ## Usage
