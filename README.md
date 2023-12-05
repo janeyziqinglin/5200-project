@@ -16,6 +16,8 @@ Exit Application: Close the application.
   - MySQL database will be used for efficient data query. 
   - For the Graphical interface, the tkinter library and the tkinter.messagebox will be used to display message boxes to the user.
   - The mysql.connector and pymysql will be used to connect the Python application to the MySQL database for CRUD (Create, Read, Update, Delete) operations.
+    -pip install mysql-connector-python
+    -pip install pymysql
 
 ## Setting up the MySQL Database
 To set up the database, import the two MySQL dump files in the github into your MySQL server:
