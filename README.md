@@ -21,7 +21,7 @@ Exit Application: Close the application.
 ## Setting up the MySQL Database
 To set up the database, import the two MySQL dump files in the github into your MySQL server:
 1. booksdump.sql
-2. xxxx.sql
+2. books_schema3.sql.sql
 
 Create a table named books with appropriate fields (e.g., id, title, author, isbn, ratings).
 
